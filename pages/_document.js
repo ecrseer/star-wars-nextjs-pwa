@@ -12,6 +12,8 @@ export default class extends Document {
     return (
       <Html lang='en' dir='ltr'>
         <Head>
+        {/* confiar em fontes externas urls etc */}
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
         {/* google font similar star wars */}
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet"></link>

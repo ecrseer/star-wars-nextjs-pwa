@@ -1,7 +1,7 @@
 import swapi from '../../../api';
 import { useEffect, useState } from 'react';
 
-const GridList=()=>{
+const GridList = () =>{
 
 const [dados,setDados] = useState('...');
     useEffect(()=>{
@@ -14,7 +14,10 @@ const [dados,setDados] = useState('...');
         console.log("DD "+process.env.NODE_ENV);
             console.log("SWW "+process.env.MY_SWAPI);
         try{
-        const {data} = await swapi.get('/films/2',{headers:{
+        const {data} = await swapi.get('/films/2',{
+            headers:{
+                "Content-Type": "application/json",
+                "Vary": "Accept",
             "Access-Control-Allow-Origin": "https://swapi.dev/",
             
         }

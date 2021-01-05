@@ -25,6 +25,16 @@ async function headers() {
     }
 ]}
 
-module.exports = {headers,wPWAProperties};
+    async function rewrites() {
+      return [
+        {
+          source: '/api/:slug',
+          destination: 'https://swapi.dev/api/:slug', // Matched parameters can be used in the destination
+        },
+      ]
+    }
+  
+
+module.exports = {headers,wPWAProperties,rewrites};
 
 

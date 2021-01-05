@@ -14,7 +14,7 @@ async function headers() {
     return [
       {
         // matching all API routes
-        source: "/:path*",
+        source: "/filmes/2",
         
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
@@ -28,8 +28,8 @@ async function headers() {
     async function rewrites() {
       return [
         {
-          source: '/api/:slug',
-          destination: 'https://swapi.dev/api/:slug', // Matched parameters can be used in the destination
+          source: '/filmes/2',
+          destination: 'https://swapi.dev/api/films/2', // Matched parameters can be used in the destination
         },
       ]
     }

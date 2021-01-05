@@ -17,7 +17,7 @@ const [dados,setDados] = useState('...');
         const {data} = await swapi.get('/films/2',{
             headers:{
             'Content-Type': 'application/json',                
-            'Access-Control-Allow-Origin': 'https://swapi.dev/',
+            'Access-Control-Allow-Origin': 'https://swapi.dev/api',
             'Access-Control-Allow-Methods' : 'GET,HEAD,OPTIONS',
             
         }
@@ -29,10 +29,14 @@ const [dados,setDados] = useState('...');
             console.log(er);
         }
     }
+    async function testagem(){
+
+    }
     return(<div>        
         <h1 >Starwars</h1>
         <h2>{dados}</h2>
         <button onClick={acessarFilmes}>aa</button>
+        <a href="/filmes/2">aad</a>
     </div>)
 }
 

@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 //http de onde sera consumida
-let basURL="https://swapi.dev/api/";
+let basURL="https://swapi.dev/api";
 
 let axconfig = { 
     baseURL:basURL

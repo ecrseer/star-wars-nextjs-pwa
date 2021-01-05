@@ -11,6 +11,8 @@ const [dados,setDados] = useState('...');
     
 
     async function acessarFilmes(){
+        console.log("DD "+process.env.NODE_ENV);
+            console.log("SWW "+process.env.MY_SWAPI);
         try{
         const {data} = await swapi.get('/films/2',{headers:{
             "Access-Control-Allow-Origin": "https://swapi.dev/",
@@ -19,7 +21,7 @@ const [dados,setDados] = useState('...');
         });
             setDados(''+data.title);
             console.log(dados);
-            console.log("DD "+process.env.NODE_ENV);
+            
         }catch(er){
             console.log(er);
         }

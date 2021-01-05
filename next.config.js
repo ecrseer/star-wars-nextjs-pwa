@@ -6,7 +6,7 @@ module.exports = withPWA({
     swSrc: 'service-worker.js'
   },
   env:{
-      NODE_ENV: process.env.NODE_ENV,
+      
       MY_SWAPI: process.env.MY_SWAPI,
   }
 })

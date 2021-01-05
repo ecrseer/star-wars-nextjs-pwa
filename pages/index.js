@@ -5,12 +5,10 @@ import GridList from '../src/components/GridList/GridList';
 
 
 export default function index() {
-    
-
-
     return(
     <div>        
         <GridList/>
+        
     </div>
     );
     

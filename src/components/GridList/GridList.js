@@ -19,6 +19,7 @@ const [dados,setDados] = useState('...');
         });
             setDados(''+data.title);
             console.log(dados);
+            console.log("DD "+process.env.NODE_ENV);
         }catch(er){
             console.log(er);
         }

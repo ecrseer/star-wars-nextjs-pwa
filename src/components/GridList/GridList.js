@@ -16,9 +16,9 @@ const [dados,setDados] = useState('...');
         try{
         const {data} = await swapi.get('/films/2',{
             headers:{
-                "Content-Type": "application/json",
-                "Vary": "Accept",
-            "Access-Control-Allow-Origin": "https://swapi.dev/",
+                'Content-Type': 'application/json',                
+            'Access-Control-Allow-Origin': 'https://swapi.dev/',
+            'Access-Control-Allow-Methods' : 'GET,HEAD,OPTIONS',
             
         }
         });

@@ -1,0 +1,6 @@
+node_modules
+.next
+public/workbox-*.js 
+public/sw.js
+README copy.md
+.env.local

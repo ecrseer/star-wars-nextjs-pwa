@@ -10,29 +10,8 @@ const wPWAProperties = withPWA({
     
     
   });
-async function headers() {
-    return [
-      {
-        // matching all API routes
-        source: "/filmes/2",
-        
-        headers: [
-          { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "*" },
-          { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-          { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
-        ]
-    }
-]}
-
-    async function rewrites() {
-      return [
-        {
-          source: '/filmes/2',
-          destination: 'https://swapi.dev/api/films/2', // Matched parameters can be used in the destination
-        },
-      ]
-    }
+ 
+ 
   
 
 module.exports = {wPWAProperties};

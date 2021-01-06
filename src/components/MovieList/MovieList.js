@@ -19,8 +19,8 @@ const MovieList = ({selected}) =>{
         eve.preventDefault();
         try {
             const data = await swapi.get('/films?page=1'); 
-            setDados(data.data.results[0]);
-            console.log(data.data.results[1].title);
+            setDados(data.data.results);
+            //console.log(data.data.results[1].title);
             selected(data.data.results[1].title);
             
         } catch (error) {
@@ -30,15 +30,18 @@ const MovieList = ({selected}) =>{
     
     return(<div>        
         <h1>Starwars Netlify</h1>        
-            <h2>{dados.title}</h2>
+            <h2>{dados[0].title}</h2>
             <form onSubmit={acessarTeste}>
             <button >aa</button>        
         </form>
         <img src="#"></img>
-        <h1>-----------</h1>
-        <Paper variant="outlined" square>
-            <h6>subtitulo</h6>
-        </Paper>
+        <h5>-----Clique em um filme para saber os personagens------</h5>
+        {
+        dados.map(filme=>(
+        <Paper variant="outlined" square onClick={()=>selected(filme.title)}>
+            <h6>titulo:{filme.title}</h6>
+        </Paper>)
+        )}
         
         
         

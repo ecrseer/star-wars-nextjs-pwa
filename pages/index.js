@@ -11,11 +11,17 @@ export default function index() {
         setSelecao(sele);
     }
     return(
-    <>        
-     <Grid>
+    <>    
+    <Grid container spacing={0}>          
+    <Grid item xs={12} sm={6} md={6} lg={6}>       
         <MovieList selected={seta_Selecao}/>
-    </Grid>   
+     </Grid>   
+     <Grid item xs={12} sm={6} md={6}  lg={6} >
+     <div>
         <h5>Selecao eh:{selecao}</h5>
+        </div>
+    </Grid>
+    </Grid>
     </>
     );
     

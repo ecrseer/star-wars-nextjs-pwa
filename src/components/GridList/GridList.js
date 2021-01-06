@@ -31,7 +31,7 @@ const GridList = ({data}) =>{
         }
     } 
     return(<div>        
-        <h1 >Starwars</h1>
+        <h1 >Starwars Netlify</h1>
         <h2>{dados}</h2>
         <form onSubmit={acessarFilmes}>
         <button >aa</button>

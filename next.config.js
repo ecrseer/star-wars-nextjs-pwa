@@ -35,6 +35,6 @@ async function headers() {
     }
   
 
-module.exports = {wPWAProperties,rewrites};
+module.exports = {wPWAProperties};
 
 

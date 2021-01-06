@@ -1,7 +1,7 @@
 import swapi from '../../../api';
 import { useEffect, useState } from 'react';
 
-const GridList = () =>{
+const GridList = ({data}) =>{
 
 const [dados,setDados] = useState('...');
     useEffect(()=>{
@@ -10,7 +10,8 @@ const [dados,setDados] = useState('...');
 
     
 
-    async function acessarFilmes(){
+    async function acessarFilmes(event){
+        event.preventDefault();
         console.log("DD "+process.env.NODE_ENV);
             console.log("SWW "+process.env.MY_SWAPI);
         try{
@@ -28,15 +29,15 @@ const [dados,setDados] = useState('...');
         }catch(er){
             console.log(er);
         }
-    }
-    async function testagem(){
-
-    }
+    } 
     return(<div>        
         <h1 >Starwars</h1>
         <h2>{dados}</h2>
-        <button onClick={acessarFilmes}>aa</button>
+        <form onSubmit={acessarFilmes}>
+        <button >aa</button>
+        </form>
         <a href="/filmes/2">aad</a>
+        
     </div>)
 }
 

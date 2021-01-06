@@ -21,8 +21,7 @@ const MovieList = ({selected}) =>{
         try {
             const data = await swapi.get('/films?page=1'); 
             setDados(data.data.results);
-            //console.log(data.data.results[1].title);
-            selected(data.data.results[1].title);
+            //console.log(data.data.results[1].title);            
             
         } catch (error) {
             console.log(error);
@@ -30,19 +29,13 @@ const MovieList = ({selected}) =>{
     }
     
     return(<div>        
-        <h1>Starwars Netlify</h1>        
-            
-            <form onSubmit={acessarTeste}>
-            <button >aa</button>        
-        </form>
-        <img src="#"></img>
         <h5>-----Clique em um filme para saber os personagens------</h5>
         {
         dados ?
         dados.map(filme=>(
         <Paper variant="outlined" square 
         onClick={()=>selected(filme.title)}        
-        >
+        key={filme.episode_id}>
             <h6>titulo:{filme.title}</h6>
         </Paper>) )
         :

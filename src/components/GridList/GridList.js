@@ -36,7 +36,7 @@ const [dados,setDados] = useState('...');
         <form onSubmit={acessarFilmes}>
         <button >aa</button>
         </form>
-        <a href="/filmes/2">aad</a>
+        
         
     </div>)
 }

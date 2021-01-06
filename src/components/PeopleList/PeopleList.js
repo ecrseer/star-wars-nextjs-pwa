@@ -15,7 +15,7 @@ async function acessarTeste(eve){
         const data = await swapi.get('/films?page=1'); 
         setDados(data.data.results);
         //console.log(data.data.results[1].title);
-        selected(data.data.results[1].title);
+        
         
     } catch (error) {
         console.log(error);

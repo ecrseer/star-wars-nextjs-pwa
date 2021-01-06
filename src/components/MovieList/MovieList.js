@@ -5,10 +5,11 @@ import { Paper } from '@material-ui/core';
 
 const MovieList = ({selected}) =>{
 
-    const [dados,setDados] = useState('...');
+    const [dados,setDados] = useState(false);
+    
     useEffect(()=>{
-        
-    })
+        acessarTeste();
+    },[])
 
      
     function stringify (x) {
@@ -16,7 +17,7 @@ const MovieList = ({selected}) =>{
     }
     
     async function acessarTeste(eve){
-        eve.preventDefault();
+        //eve.preventDefault();
         try {
             const data = await swapi.get('/films?page=1'); 
             setDados(data.data.results);
@@ -30,18 +31,25 @@ const MovieList = ({selected}) =>{
     
     return(<div>        
         <h1>Starwars Netlify</h1>        
-            <h2>{dados[0].title}</h2>
+            
             <form onSubmit={acessarTeste}>
             <button >aa</button>        
         </form>
         <img src="#"></img>
         <h5>-----Clique em um filme para saber os personagens------</h5>
         {
+        dados ?
         dados.map(filme=>(
-        <Paper variant="outlined" square onClick={()=>selected(filme.title)}>
+        <Paper variant="outlined" square 
+        onClick={()=>selected(filme.title)}
+        
+        >
             <h6>titulo:{filme.title}</h6>
-        </Paper>)
-        )}
+        </Paper>) )
+        :
+        <h6>nomovie</h6>
+        
+        }
         
         
         

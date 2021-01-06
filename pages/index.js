@@ -2,7 +2,7 @@ import { Grid } from '@material-ui/core';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import MovieList from '../src/components/MovieList/MovieList';
-
+import PeopleList from '../src/components/PeopleList/PeopleList';
 
 
 export default function index() {
@@ -19,6 +19,7 @@ export default function index() {
      <Grid item xs={12} sm={6} md={6}  lg={6} >
      <div>
         <h5>Selecao eh:{selecao}</h5>
+        <PeopleList/>
         </div>
     </Grid>
     </Grid>

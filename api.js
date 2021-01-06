@@ -2,8 +2,9 @@
 import axios from 'axios';
 
 //http de onde sera consumida
-let basURL= //process.env.NODE_ENV == 'production'? ""+process.env.MY_SWAPI :
-"/";
+let basURL= process.env.NODE_ENV == 'production'? 
+"https://swapi-g4b-proxy.herokuapp.com/":
+"https://swapi.dev/api";
 
 let axconfig = { 
     baseURL:basURL

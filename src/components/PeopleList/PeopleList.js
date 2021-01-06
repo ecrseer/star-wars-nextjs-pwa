@@ -7,20 +7,22 @@ const PeopleList = ({selected}) =>{
 
     const [dados,setDados] = useState('...');
     useEffect(()=>{
-        
-    })
-async function acessarTeste(eve){
-    eve.preventDefault();
+        acessarPersonagens()
+    },[])
+async function acessarPersonagens(eve){
+    
     try {
         const {data} = await swapi.get('/films?page=1'); 
         setDados(data.results);
-        //console.log(data.data.results[1].title);
-        
+        //console.log(data.data.results[1].title);       
         
     } catch (error) {
         console.log(error);
     }
 }
-return(<h5>ma peop</h5>)
+return(<div>
+ma peop
+
+</div>)
 }
 export default PeopleList;

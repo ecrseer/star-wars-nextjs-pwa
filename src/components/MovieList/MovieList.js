@@ -8,7 +8,7 @@ const MovieList = ({selected}) =>{
     const [dados,setDados] = useState(false);
     
     useEffect(()=>{
-        acessarTeste();
+        acessarFilmes();
     },[])
 
      
@@ -16,7 +16,7 @@ const MovieList = ({selected}) =>{
         console.log(Object.prototype.toString.call(x));
     }
     
-    async function acessarTeste(eve){
+    async function acessarFilmes(eve){
         //eve.preventDefault();
         try {
             const {data} = await swapi.get('/films?page=1'); 

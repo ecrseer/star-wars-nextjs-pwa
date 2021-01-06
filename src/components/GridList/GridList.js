@@ -20,9 +20,10 @@ const GridList = ({data}) =>{
             'Content-Type': 'application/json',                
             'Access-Control-Allow-Origin': 'https://swapi.dev/api',
             'Access-Control-Allow-Methods' : 'GET,HEAD,OPTIONS',
-            
+            'Access-Control-Allow-Headers' : 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
         }
         });
+        
             setDados(''+data.title);
             console.log(dados);
             

@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import GridList from '../src/components/GridList/GridList';
+import MovieList from '../src/components/MovieList/MovieList';
 
 
 
 export default function index() {
     return(
     <div>        
-        <GridList/>
+        <MovieList/>
         
     </div>
     );

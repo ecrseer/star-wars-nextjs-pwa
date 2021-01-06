@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "proxy":"https://swapi.dev/api",
   "private": true,
   "scripts": {
     "dev": "next",

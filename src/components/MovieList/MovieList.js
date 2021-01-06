@@ -21,8 +21,7 @@ const MovieList = ({selected}) =>{
         try {
             const {data} = await swapi.get('/films?page=1'); 
             setDados(data.results);
-            //console.log(data.data.results[1].title);            
-            
+            //console.log(data.data.results[1].title);  
         } catch (error) {
             console.log(error);
         }
@@ -33,10 +32,10 @@ const MovieList = ({selected}) =>{
         {
         dados ?
         dados.map(filme=>(
-        <Paper variant="outlined" square 
-        onClick={()=>selected(filme.title)}        
+        <Paper elevation={3} variant="elevation"
+        onClick={()=>selected(filme.characters)}        
         key={filme.episode_id}>
-            <h6>titulo:{filme.title}</h6>
+            <h4>titulo:{filme.title}</h4>
         </Paper>) )
         :
         <h6>nomovie</h6>

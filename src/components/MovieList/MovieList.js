@@ -54,7 +54,7 @@ const MovieList = ({data}) =>{
     return(<div>        
         <h1>Starwars Netlify</h1>        
             <h2>{dados.titulo}</h2>
-            <form onSubmit={acessarTeste}>
+            <form onSubmit={acessarLista}>
             <button >aa</button>        
         </form>
         <img src="#"></img>

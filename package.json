@@ -10,7 +10,7 @@
     "start": "next start",
     "export": "npm run build && next export",
     "predeploy": "rm -rf node_modules/.cache && rm -rf out",
-    "deploy": "rm -rf .next && npm run export",
+    "deploy": "npm run predeploy && rm -rf .next && npm run export",
     "qcmt" : "git add . && git commit -m 'deploy2test' "
     
     

@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "export": "npm run build && next export",
-    "qcmt" : "git add . && git commit -m 'deploytest' "
+    "qcmt" : "git add . && git commit -m 'deploy2test' "
     
     
     

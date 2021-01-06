@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 const GridList = ({data}) =>{
 
-const [dados,setDados] = useState('...');
+    const [dados,setDados] = useState('...');
     useEffect(()=>{
         
     })

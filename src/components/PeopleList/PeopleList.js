@@ -12,8 +12,8 @@ const PeopleList = ({selected}) =>{
 async function acessarTeste(eve){
     eve.preventDefault();
     try {
-        const data = await swapi.get('/films?page=1'); 
-        setDados(data.data.results);
+        const {data} = await swapi.get('/films?page=1'); 
+        setDados(data.results);
         //console.log(data.data.results[1].title);
         
         

@@ -41,8 +41,7 @@ const MovieList = ({selected}) =>{
         dados ?
         dados.map(filme=>(
         <Paper variant="outlined" square 
-        onClick={()=>selected(filme.title)}
-        
+        onClick={()=>selected(filme.title)}        
         >
             <h6>titulo:{filme.title}</h6>
         </Paper>) )

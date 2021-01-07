@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 //http de onde sera consumida as imagens
-let basURL= "https://private-anon-f31303ce21-starhub.apiary-mock.com/api/";
+let basURL= "https://raw.githubusercontent.com/akabab/starwars-api/master/api/";
 
 let axconfig = { 
     baseURL:basURL

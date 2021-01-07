@@ -5,37 +5,52 @@ import { Box, Paper } from '@material-ui/core';
 import {PersonagemImgApi} from '../../assets/personagensImageApi';
 const PeopleList = ({selected}) =>{
 
-    const [dados,setDados] = useState([]);
-    const [personagens,setPersonagens] = useState(['','2']);
-
-    useEffect(()=>{  
-        acessaPersonagens(selected)      
-    },
-    [selected])
-
-
+    const [dados,setDados] = useState([]);    
+    const [personagensImgs,setPersonagensImgs] = useState([{}]);
+    
+ async function getTodosImgApi(){
+    
+    try {
+        const {data} = await PersonagemImgApi.get('/all.json');
+        console.log(data[0].name)
+        setPersonagensImgs(data);
+        }catch (error) {
+            console.log('0 images porque '+error)        
+        } 
+ }
+ function getImgPersonagem(nomePersonaCard){
+    let personagemMesmoNome = personagensImgs
+        .filter(personag=>personag.name==nomePersonaCard);
+     console.log(personagemMesmoNome);
+ }
 
 async function acessaPersonagens(arrLinks){    
     let arr = arrLinks;
-    setDados([]);
+    setDados([]);    
+    
     for (var i = 0; i < arr.length; i++) {
-        try{
-            const {data} = await axios.get(arr[i]);
-            const fotoPersonagem = await PersonagemImgApi.get('/characters/Chewbacca');
-            console.log(fotoPersonagem.data.image);
-            setDados(dados => [...dados, data]);
+        try{            
+            const {data} = await axios.get(arr[i]);       
+               
+            setDados(dados => [...dados, data]);            
         }catch(erro){
           console.log(erro);
-      }
-    }
-    
+      }}
+      
+   }
 
-}
+   useEffect(()=>{  
+    getTodosImgApi();
+    acessaPersonagens(selected)      
+},
+[selected])
+
 const cardPersonagem = (personagem,index)=>{
     return(<Paper elevation={3}
         variant="elevation" 
         style={{paddingLeft:'12px'}}               
            key={index}>
+              
                <h4>{personagem.name}</h4>
                <h6>altura: {personagem.height}</h6>
                <h6>massa: {personagem.mass}</h6>

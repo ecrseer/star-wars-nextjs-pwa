@@ -33,7 +33,7 @@ export default function index() {
      <Grid item xs={6} sm={6} md={6}  lg={2} >
      <div>
         
-        <PeopleList selected={selecao}/>
+        <PeopleList ArrayPersonagemDoFilme={selecao}/>
         </div>
     </Grid>
     </Grid>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Box, Grow, Paper, Typography } from '@material-ui/core';
 import {PersonagemImgApi} from '../../assets/personagensImageApi';
-const PeopleList = ({selected}) =>{
+const PeopleList = (props) =>{
 
     const [dados,setDados] = useState([]);    
     const [personagensImgs,setPersonagensImgs] = useState([{}]);
@@ -43,9 +43,9 @@ async function acessaPersonagens(arrLinks){
    useEffect(()=>{  
     setIsCarregando(true);
     getTodosImgApi();
-    acessaPersonagens(selected);     
+    acessaPersonagens(props.ArrayPersonagemDoFilme);     
 },
-[selected])
+[props.ArrayPersonagemDoFilme])
 
 const cardPersonagem = (personagem,index)=>{
     return(<Paper elevation={3}
@@ -69,13 +69,9 @@ return(
 <div> 
 <button onClick={()=>{setisCarregando(anterior=>!anterior)}}>isCarregando</button>
 <p>bol: {isCarregando}</p>
-<Grow in={!isCarregando}><div>nop
-{isCarregando?
-<div></div>:<h2></h2>
-}
+<Grow in={!isCarregando} {...props}>
 
- </div>
-
+ 
   <div>
         {dados?
             dados.map((personagem,index)=>{    
@@ -86,6 +82,7 @@ return(
         }
    </div>
 </Grow>
+
 
 
 

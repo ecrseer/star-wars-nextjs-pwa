@@ -2,7 +2,7 @@ import {swapi} from '../../../api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Box, Paper } from '@material-ui/core';
-
+import {PersonagemImgApi} from '../../assets/personagensImageApi';
 const PeopleList = ({selected}) =>{
 
     const [dados,setDados] = useState([]);
@@ -21,7 +21,8 @@ async function acessaPersonagens(arrLinks){
     for (var i = 0; i < arr.length; i++) {
         try{
             const {data} = await axios.get(arr[i]);
-            
+            const fotoPersonagem = await PersonagemImgApi.get('/characters/Chewbacca');
+            console.log(fotoPersonagem.data.image);
             setDados(dados => [...dados, data]);
         }catch(erro){
           console.log(erro);

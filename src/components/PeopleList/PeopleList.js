@@ -12,7 +12,7 @@ const PeopleList = ({selected}) =>{
     
     try {
         const {data} = await PersonagemImgApi.get('/all.json');
-        console.log(data[0].name)
+        console.log('imagemdo'+data[1].name)
         setPersonagensImgs(data);
         }catch (error) {
             console.log('0 images porque '+error)        
@@ -30,8 +30,7 @@ async function acessaPersonagens(arrLinks){
     
     for (var i = 0; i < arr.length; i++) {
         try{            
-            const {data} = await axios.get(arr[i]);       
-               
+            const {data} = await axios.get(arr[i]);
             setDados(dados => [...dados, data]);            
         }catch(erro){
           console.log(erro);

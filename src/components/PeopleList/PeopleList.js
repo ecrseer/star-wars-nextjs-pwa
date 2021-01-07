@@ -1,33 +1,20 @@
 import {swapi} from '../../../api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Paper } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 
 const PeopleList = ({selected}) =>{
 
     const [dados,setDados] = useState([]);
     const [personagens,setPersonagens] = useState(['','2']);
+
     useEffect(()=>{  
         a_a(selected)      
     },
     [selected])
 
-async function acessarPersonagens(eve){    
-    try {
-        const {data} = await swapi.get('/films?page=1'); 
-        setDados(data.results);
-        //console.log(data.data.results[1].title);       
-        
-    } catch (error) {
-        console.log(error);
-    }
-}
-async function ars(){
-    setPersonagens(
-    selected.map(url=>{
-        url+"mod"
-    }));
-}
+
+
 async function a_a(arrLinks){    
     let arr = arrLinks;
     setDados([]);
@@ -53,13 +40,22 @@ const cardPersonagem = (nome,index)=>{
 return(
 <div>
  <button onClick={()=>{a_a(selected)}}>a-a</button>
- {dados?
-     dados.map((personagem,index)=>{    
-    return(cardPersonagem(personagem.name,index))    
- })
- :
- (<div></div>)
- }
+ <Box
+        display="flex"
+        flexWrap="wrap"
+        p={1}
+        m={1}
+        bgcolor="background.paper"
+        css={{ maxHeight: 300 }}
+      >
+        {dados?
+            dados.map((personagem,index)=>{    
+            return(cardPersonagem(personagem.name,index))    
+        })
+        :
+        (<div></div>)
+        }
+ </Box>
 </div>)
 }
 export default PeopleList;

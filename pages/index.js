@@ -4,11 +4,25 @@ import { useEffect, useState } from 'react';
 import MovieList from '../src/components/MovieList/MovieList';
 import PeopleList from '../src/components/PeopleList/PeopleList';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper,
+    }, 
+  }));
+
 export default function index() {
-    
-    const [selecao,setSelecao] = useState('nenhuma');
+
+    const [selecao,setSelecao] = useState([]);
     function seta_Selecao(sele){
         setSelecao(sele);    }
+
+
+    const classes = useStyles();
+
     return(
     <div >    
     <Grid container spacing={3}     

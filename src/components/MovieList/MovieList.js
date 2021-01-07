@@ -2,14 +2,25 @@ import {swapi} from '../../../api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, ButtonGroup, Paper } from '@material-ui/core';
+async function acessarFilmes(eve){
+    //eve.preventDefault();
+    try {
+        const {data} = await swapi.get('/films?page=1'); 
+        //setDados(data.results);
+        return(data.results);
+        //console.log(data.data.results[1].title);  
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-const MovieList = ({selected}) =>{
+const MovieList = ({selected,allFilms,testagem}) =>{
 
-    const [dados,setDados] = useState([]);
-    const [todosFilmes,setTodosFilmes] = useState([]);
+    const [dados,setDados] = useState(allFilms);
+    const [todosFilmes,setTodosFilmes] = useState(allFilms);
     const [isLendoInfo,setLendoInfo] = useState(false);
     useEffect(()=>{
-        acessarFilmes();
+        //acessarFilmes();
     },[])
 
     const filmeInfo = (filme)=>{
@@ -24,17 +35,7 @@ const MovieList = ({selected}) =>{
         console.log(Object.prototype.toString.call(x));
     }
     
-    async function acessarFilmes(eve){
-        //eve.preventDefault();
-        try {
-            const {data} = await swapi.get('/films?page=1'); 
-            setDados(data.results);
-            setTodosFilmes(data.results);
-            //console.log(data.data.results[1].title);  
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    
     async function mostrarInfo(FilmeBtn){
         if(isLendoInfo){
           setLendoInfo(false);
@@ -48,7 +49,7 @@ const MovieList = ({selected}) =>{
         }
     }
     
-    return(<div>        
+    return(<div>        {testagem}
         <h5>-----Clique em um filme para saber os personagens------</h5>
         {
         dados ?
@@ -66,19 +67,19 @@ const MovieList = ({selected}) =>{
         orientation="vertical"
         color="primary"
         aria-label="vertical contained primary button group"
-        variant="contained"
+        variant="text"
       >
       {dados?
-      dados.map(filme=>
-        (<Button onClick={()=>{
+        dados.map(filme=>
+          (<Button onClick={()=>{
             mostrarInfo(filme)
             selected(filme.characters)}}        
-        key={filme.episode_id}>
-        titulo:{filme.title}
-        {isLendoInfo?
-          (filmeInfo(filme))  
-        :<><br/>Clique para mais informacoes</>
-        }
+            key={filme.episode_id}>
+                titulo:{filme.title}
+                {isLendoInfo?
+                (filmeInfo(filme))  
+                :<><br/>Clique para mais informacoes</>
+                }
         </Button>))
         :<div></div>
       }
@@ -88,5 +89,16 @@ const MovieList = ({selected}) =>{
         
     </div>)
 }
+export async function getStaticProps()  {
+    console.log('puxando..');
+    const _allFilms = await acessarFilmes();
+     console.log(allFilms[0].title);
+
+        if (!_allFilms)
+           return {props:{testagem:'hojehojehoje'}}
+
+    return {   props: {   allFilms: _allFilms,  },
+    };
+  };
 
 export default MovieList;

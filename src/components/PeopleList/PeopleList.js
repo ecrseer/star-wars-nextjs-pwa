@@ -5,11 +5,12 @@ import { Paper } from '@material-ui/core';
 
 const PeopleList = ({selected}) =>{
 
-    const [dados,setDados] = useState(['...']);
+    const [dados,setDados] = useState([]);
     const [personagens,setPersonagens] = useState(['','2']);
-    useEffect(()=>{        
+    useEffect(()=>{  
+        a_a(selected)      
     },
-    [])
+    [selected])
 
 async function acessarPersonagens(eve){    
     try {
@@ -29,23 +30,36 @@ async function ars(){
 }
 async function a_a(arrLinks){    
     let arr = arrLinks;
+    setDados([]);
     for (var i = 0; i < arr.length; i++) {
-      console.log(arr[i]);
+        try{
+            const {data} = await axios.get(arr[i]);
+            
+            setDados(dados => [...dados, data]);
+        }catch(erro){
+          console.log(erro);
+      }
     }
+    
 
-    try {
-        const {data} = await axios.get("http://swapi.dev/api/people/1/")
-        setDados(data.name); 
-        //console.log(data.data.results[1].title);       
-        
-    } catch (error) {
-        console.log(error);
-    }
+}
+const cardPersonagem = (nome,index)=>{
+    return(<Paper elevation={3}
+        variant="elevation"                
+           key={index}>
+               <h4>nome:{nome}</h4>
+           </Paper>)
 }
 return(
 <div>
-dados é <h1>{dados[0]}</h1>
  <button onClick={()=>{a_a(selected)}}>a-a</button>
+ {dados?
+     dados.map((personagem,index)=>{    
+    return(cardPersonagem(personagem.name,index))    
+ })
+ :
+ (<div></div>)
+ }
 </div>)
 }
 export default PeopleList;

@@ -1,13 +1,14 @@
 import {swapi} from '../../../api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Box, Paper } from '@material-ui/core';
+import { Box, Grow, Paper, Typography } from '@material-ui/core';
 import {PersonagemImgApi} from '../../assets/personagensImageApi';
 const PeopleList = ({selected}) =>{
 
     const [dados,setDados] = useState([]);    
     const [personagensImgs,setPersonagensImgs] = useState([{}]);
-    
+    const [isCarregando,setIsCarregando] = useState(false);
+
  async function getTodosImgApi(){
     
     try {
@@ -31,7 +32,8 @@ async function acessaPersonagens(arrLinks){
     for (var i = 0; i < arr.length; i++) {
         try{            
             const {data} = await axios.get(arr[i]);
-            setDados(dados => [...dados, data]);            
+            setDados(dados => [...dados, data]); 
+            setIsCarregando(false);
         }catch(erro){
           console.log(erro);
       }}
@@ -39,8 +41,9 @@ async function acessaPersonagens(arrLinks){
    }
 
    useEffect(()=>{  
+    setIsCarregando(true);
     getTodosImgApi();
-    acessaPersonagens(selected)      
+    acessaPersonagens(selected);     
 },
 [selected])
 
@@ -48,8 +51,9 @@ const cardPersonagem = (personagem,index)=>{
     return(<Paper elevation={3}
         variant="elevation" 
         style={{paddingLeft:'12px'}}               
-           key={index}>
-              
+           key={index}
+           color="secondary">
+             <Typography color="secondary">
                <h4>{personagem.name}</h4>
                <h6>altura: {personagem.height}</h6>
                <h6>massa: {personagem.mass}</h6>
@@ -58,11 +62,21 @@ const cardPersonagem = (personagem,index)=>{
                <h6>cor dos olhos: {personagem.eye_color}</h6>
                <h6>data de nascimento: {personagem.birth_year}</h6>
                <h6>genero: {personagem.gender}</h6>
-               
+               </Typography> 
            </Paper>)
 }
 return(
 <div> 
+<button onClick={()=>{setisCarregando(anterior=>!anterior)}}>isCarregando</button>
+<p>bol: {isCarregando}</p>
+<Grow in={!isCarregando}><div>nop
+{isCarregando?
+<div></div>:<h2></h2>
+}
+
+ </div>
+
+  <div>
         {dados?
             dados.map((personagem,index)=>{    
             return(cardPersonagem(personagem,index))    
@@ -70,7 +84,13 @@ return(
         :
         (<div></div>)
         }
- 
+   </div>
+</Grow>
+
+
+
+
+
 </div>)
 }
 export default PeopleList;

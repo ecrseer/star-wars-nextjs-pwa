@@ -30,7 +30,7 @@ export default function index() {
     <Grid item xs={12} sm={6} md={6} lg={6}>       
         <MovieList selected={seta_Selecao}/>
      </Grid>   
-     <Grid item xs={12} sm={6} md={6}  lg={2} >
+     <Grid item xs={6} sm={6} md={6}  lg={2} >
      <div>
         
         <PeopleList selected={selecao}/>

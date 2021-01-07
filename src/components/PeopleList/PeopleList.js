@@ -9,13 +9,13 @@ const PeopleList = ({selected}) =>{
     const [personagens,setPersonagens] = useState(['','2']);
 
     useEffect(()=>{  
-        a_a(selected)      
+        acessaPersonagens(selected)      
     },
     [selected])
 
 
 
-async function a_a(arrLinks){    
+async function acessaPersonagens(arrLinks){    
     let arr = arrLinks;
     setDados([]);
     for (var i = 0; i < arr.length; i++) {
@@ -30,18 +30,27 @@ async function a_a(arrLinks){
     
 
 }
-const cardPersonagem = (nome,index)=>{
+const cardPersonagem = (personagem,index)=>{
     return(<Paper elevation={3}
-        variant="elevation"                
+        variant="elevation" 
+        style={{paddingLeft:'12px'}}               
            key={index}>
-               <h4>nome:{nome}</h4>
+               <h4>{personagem.name}</h4>
+               <h6>altura: {personagem.height}</h6>
+               <h6>massa: {personagem.mass}</h6>
+               <h6>cor do cabelo: {personagem.hair_color}</h6>
+               <h6>cor da pele: {personagem.skin_color}</h6>
+               <h6>cor dos olhos: {personagem.eye_color}</h6>
+               <h6>data de nascimento: {personagem.birth_year}</h6>
+               <h6>genero: {personagem.gender}</h6>
+               
            </Paper>)
 }
 return(
 <div> 
         {dados?
             dados.map((personagem,index)=>{    
-            return(cardPersonagem(personagem.name,index))    
+            return(cardPersonagem(personagem,index))    
         })
         :
         (<div></div>)

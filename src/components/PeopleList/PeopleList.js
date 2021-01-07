@@ -38,16 +38,7 @@ const cardPersonagem = (nome,index)=>{
            </Paper>)
 }
 return(
-<div>
- <button onClick={()=>{a_a(selected)}}>a-a</button>
- <Box
-        display="flex"
-        flexWrap="wrap"
-        p={1}
-        m={1}
-        bgcolor="background.paper"
-        css={{ maxHeight: 300 }}
-      >
+<div> 
         {dados?
             dados.map((personagem,index)=>{    
             return(cardPersonagem(personagem.name,index))    
@@ -55,7 +46,7 @@ return(
         :
         (<div></div>)
         }
- </Box>
+ 
 </div>)
 }
 export default PeopleList;

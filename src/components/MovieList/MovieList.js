@@ -4,12 +4,16 @@ import { Button, ButtonGroup, makeStyles, Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {     
+        display:'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 0.2fr))',
+        gridGap: '10px',
+        justifyContent: 'center'
+                
+    },info:{
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-      
-                
-    },
+    }
 }));
 
 const MovieList = ({setPNoFilme}) =>{

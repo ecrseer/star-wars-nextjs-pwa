@@ -26,12 +26,12 @@ export default function index() {
     /* estado utilizado para armazenar o array de personagens
          que será pesquisado pelo respectivo componente no axios
      */
-    const [selecao,setSelecao] = useState([]);
+    const [arrPersonagensNoFilme,setArrPersonagensNoFilme] = useState([]);
 
     /* funcao que possibilita manipular esse estado
      em outro componente */
-    function seta_Selecao(sele){
-        setSelecao(sele);    }
+    function seta_arrPersonagensNoFilme(psnagens){
+        setArrPersonagensNoFilme(psnagens);    }
 
 
     /* utiliza o css do material ui declarado acima */
@@ -41,12 +41,12 @@ export default function index() {
         /* classname utilizando o css declarado acima */
     <div className={classes.root}>    
         {/* entregando state do index como prop dentro da funcao */}
-        <MovieList selected={seta_Selecao} className={classes.filmes}/>  
+        <MovieList setPNoFilme={seta_arrPersonagensNoFilme} className={classes.filmes}/>  
 
         {/* consumindo o array passado pelo 
           MovieList passando-o como prop
          */}              
-        <PeopleList personagensfilme={selecao} 
+        <PeopleList personagensfilme={arrPersonagensNoFilme} 
         className={classes.root}/>     
     
     </div>

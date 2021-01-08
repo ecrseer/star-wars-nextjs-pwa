@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Button, ButtonGroup, Paper } from '@material-ui/core';
 
-const MovieList = ({selected}) =>{
+const MovieList = ({setPNoFilme}) =>{
 
     const [dados,setDados] = useState([]);
     const [todosFilmes,setTodosFilmes] = useState([]);
@@ -17,11 +17,11 @@ const MovieList = ({selected}) =>{
         acessarFilmes();
     },[])
 
-    const filmeInfo = (filme)=>{
-        return(<><br/>diretor: {filme.director}
-        <br/>produtor: {filme.producer}
-        <br/>numero do filme: {filme.episode_id}
-        <br/>data de lançamento: {filme.release_date}
+    const FilmeInfo = ({filmeSele})=>{
+        return(<><br/>diretor: {filmeSele.director}
+        <br/>produtor: {filmeSele.producer}
+        <br/>numero do filme: {filmeSele.episode_id}
+        <br/>data de lançamento: {filmeSele.release_date}
         
         </>)
     }
@@ -44,13 +44,13 @@ const MovieList = ({selected}) =>{
             console.log(error);
         }
     }
-    async function mostrarInfo(FilmeBtn){
+    async function mostrarInfo(FilmeBtnInfo){
         if(isLendoInfo){
           setLendoInfo(false);
           setDados(todosFilmes);
         }else{
             let filmeSelecionado = 
-                dados.filter(filme=>filme==FilmeBtn);
+                dados.filter(filme=>filme==FilmeBtnInfo);
                 console.log(filmeSelecionado[0].title);
             setDados(filmeSelecionado);
             setLendoInfo(true);
@@ -74,14 +74,15 @@ const MovieList = ({selected}) =>{
         dados.map(filme=>
         (<Button onClick={()=>{
             mostrarInfo(filme)
-            selected(filme.characters)
+            setPNoFilme(filme.characters)
             }}        
             key={filme.episode_id}>
                 titulo:{filme.title}
 
                 {isLendoInfo?
-                (filmeInfo(filme))  
-                :<><br/>Clique para mais informacoes</>
+                <FilmeInfo filmeSele={filme}/>  
+                :
+                <><br/>Clique para mais informacoes</>
                 }
         </Button>))
         :<div></div>

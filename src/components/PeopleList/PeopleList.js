@@ -8,9 +8,9 @@ import PeopleCard from './PeopleCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {     
-        display:'flex',
-        
-        
+        display:'grid',
+        gridTemplateColumns: 'repeat(3, minmax(250px, 1fr))',
+        gridGap: '10px'
         
     },
     gridList: {
@@ -28,7 +28,7 @@ const PeopleList = (props) =>{
     function getImgPersonagem(nomePersonaCard){
         let personagemMesmoNome = personagensImgs
             .filter(personag=>personag.name==nomePersonaCard);
-         if(typeof personagemMesmoNome[0].image === 'undefined')
+         if(typeof personagemMesmoNome === 'undefined')
             return('#')
 
          return(personagemMesmoNome[0].image);
@@ -109,21 +109,12 @@ const CardPersonagem = ()=>{
             
             
 
-const cartaoPersonagem = (personagem,index)=>{
-    return(
-        <Box></Box>
-
-    )}
 
 return(
 
-
  <Grow in={!isCarregando} {...props}> 
-   <div className={classes.root}>
-   {dados[0]?
-    <CardPersonagem/>
-   :<div></div>
-}
+  <div className={classes.root}>
+     <CardPersonagem/>
    </div>
  </Grow>
 

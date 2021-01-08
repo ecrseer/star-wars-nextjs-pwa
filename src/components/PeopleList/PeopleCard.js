@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PeopleCard() {
+export default function PeopleCard({dados}) {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 

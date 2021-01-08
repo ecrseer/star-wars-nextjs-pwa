@@ -94,8 +94,7 @@ const MovieList = ({setPNoFilme}) =>{
             mostrarInfo(filme)            
             }}        
             key={filme.episode_id}>
-                titulo:{filme.title}
-
+                Filme:{filme.title}
                 {isLendoInfo?
                 <FilmeInfo filmeSele={filme}/>  
                 :

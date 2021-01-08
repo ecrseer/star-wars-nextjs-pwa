@@ -48,11 +48,13 @@ const PeopleList = (props) =>{
 async function acessaPersonagens(arrLinks){    
     let arr = arrLinks;
     setDados([]);    
-    if(arr.length>1){
-        
+    
+    if(arr.length>1){  
+             
 
     for (var i = 0; i < arr.length; i++) { 
         try{            
+            
             const {data} = await axios.get(arr[i]);
             setDados(dados => [...dados, data]); 
             
@@ -69,21 +71,20 @@ async function acessaPersonagens(arrLinks){
 },
 [props.personagensfilme])
 
-const CardPersonagem = ()=>{   
-      
+const CardPersonagem = ()=>{         
         return(
         <div className={classes.root}>{
           dados.map((personagem,index)=>{     
             return(
-                <Paper elevation={3}
+                <Paper elevation={4}
             variant="elevation" 
             style={{paddingLeft:'12px'
             ,backgroundColor:'#111'}}               
                key={index}
                color="secondary">
                  <img src={getImgPersonagem(personagem.name)}
-                 width="20%"/>
-                 <Typography color="secondary">
+                 width="32%"/>
+                 <Typography color="primary">
                    <div>{personagem.name}</div>
                    
                    <div>altura: {personagem.height}</div>
@@ -96,11 +97,7 @@ const CardPersonagem = ()=>{
                    </Typography> 
                </Paper>
 
-          )})
-
-
-        }</div>)
-            
+          )})}</div>)            
             
         }
             
@@ -108,18 +105,10 @@ const CardPersonagem = ()=>{
 
 
 return(
-
  <Grow in={!isCarregando} {...props}> 
   <div >
      <CardPersonagem/>
    </div>
  </Grow>
-
-
-
-
-
-
-)
-}
+ )}
 export default PeopleList;

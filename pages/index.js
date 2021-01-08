@@ -13,11 +13,9 @@ const useStyles = makeStyles((theme) => ({
          display: 'grid',         
          gridGap: '20px',
          alignItems:'stretch'
-         
-      
-      
     }, 
     filmes:{
+        /* faz os filmes ocuparem um espaço maior */
         gridColumn: 'span 2',
         
     }
@@ -29,9 +27,12 @@ export default function index() {
          que será pesquisado pelo respectivo componente no axios
      */
     const [arrPersonagensNoFilme,setArrPersonagensNoFilme] = useState([]);
-    useEffect(()=>{
-        console.log('arrPersonagensNoFilme[0].name')
+
+    /* sempre que o array de personagens for
+    alterado os componentes serao reidratados com o novo array */
+    useEffect(()=>{        
     },[arrPersonagensNoFilme])
+
     /* funcao que possibilita manipular esse estado
      em outro componente */
     function seta_arrPersonagensNoFilme(psnagens){

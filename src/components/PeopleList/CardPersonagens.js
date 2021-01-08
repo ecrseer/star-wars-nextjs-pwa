@@ -16,8 +16,14 @@ const useStyles = makeStyles((theme) => ({
 const CardPersonagens = ({SwapiDados})=>{  
         
     const classes = useStyles();
+
+    /* estado que sera usado para armazenar as urls das imagens de cada personagem
+     que nao encontrei na `swapi.dev` */
     const [personagensImgs,setPersonagensImgs] = useState([{}]);
 
+    /* metodo que utiliza outra "api" para buscar a url da
+    foto de cada personagem pelo axios e as armazena
+    no state `personagensImgs` */
     async function getTodosImgApi(){
 
         try {
@@ -30,6 +36,7 @@ const CardPersonagens = ({SwapiDados})=>{
             } 
         }
 
+        /*  */
         function getImgPersonagem(nomePersonaCard){
             let personagemMesmoNome = personagensImgs
                 .filter(personag=>personag.name==nomePersonaCard);

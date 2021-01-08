@@ -32,6 +32,9 @@ const MovieList = ({setPNoFilme}) =>{
         acessarFilmes();
     },[])
 
+    /* elemento que será renderizado dentro do botão
+    pra mostrar informacoes do filme selecionado;
+    só aparece se ´isLendoInfo` for verdadeiro */
     const FilmeInfo = ({filmeSele})=>{
         return(<><br/>diretor: {filmeSele.director}
         <br/>produtor: {filmeSele.producer}
@@ -44,32 +47,59 @@ const MovieList = ({setPNoFilme}) =>{
         console.log(Object.prototype.toString.call(x));
     }
     
-    async function acessarFilmes(eve){
-        //eve.preventDefault();
+    async function acessarFilmes(){
+        
         try {
             /* recebendo asincronimente
               o json da api(swapi) */
             const {data} = await swapi.get('/films?page=1'); 
 
-            /* lista de filmes  */
+            /* gambiarra: quando um filme for desselecionado/
+            desclicado a variavel/state `todosFilmes`
+            re-alimentará a variavel/state `dados`                
+              */
             setDados(data.results);
             setTodosFilmes(data.results);
             
         } catch (error) {
+            /* trycatch:se a api/internet estiver indisponivel 
+            não quero que o app quebre */
             console.log(error);
         }
     }
+
+    /* metodo executado sempre que um filme for clicado
+        recebe um objeto com os dados do filme 
+        que esta atualmente sendo mapeado no return
+     */
     async function mostrarInfo(FilmeBtnInfo){
+      /* se no momento que o botao acionou essa 
+      funcao ele era um botao que estava com 
+      informacoes do filme sendo lidas
+      os dados mapeados retornarao ao estado inicial      
+       */
         if(isLendoInfo){
           setLendoInfo(false);
-          setDados(todosFilmes);  
-//          setPNoFilme([]);
+          setDados(todosFilmes); 
+           
+
         }else{
+            /* se no momento que o botao nao estava com 
+            informacoes do filme entao o filme mapeado
+            do respectivo botao sera passado como parametro
+            e filtrado dentre todos os filmes armazenados em 
+            `dados` */
             let filmeSelecionado = 
                 dados.filter(filme=>filme==FilmeBtnInfo);
-               // console.log(filmeSelecionado[0].title);
+               
+            /* agora os dados mapearao somente esse filme filtrado */    
             setDados(filmeSelecionado);
             setLendoInfo(true);
+            /* todos os personagens do filme clicado serao 
+            passados como array pra funcao que armazena no
+            state `arrPersonagensNoFilme` do `index.js` que
+            é componente pai e enviará para a lista de 
+            personagens `PeopleList.js` */
             setPNoFilme(FilmeBtnInfo.characters)
         }
     }
@@ -84,17 +114,21 @@ const MovieList = ({setPNoFilme}) =>{
         variant="text"
         className={classes.root}
       >
-      {/* se houver dados da swapi no state
-        eles serao mapeados um por um onde cada um 
-        renderizara um botao
+      {/* operador ternario que mapeia o state
+        `dados` se a swapi tiver populado ele.
+        se nao tiver exibira uma div vazia
        */}
       {dados?
         dados.map(filme=>
         (<Button onClick={()=>{
             mostrarInfo(filme)            
-            }}        
+            }}                    
             key={filme.episode_id}>
                 Filme:{filme.title}
+                {/* isLendoInfo é ligado/desligado no metodo
+                mostrarInfo, aqui é usado outro operador ternario
+                para decidir se deve ser renderizado
+                 as informacoes do filme                 */}
                 {isLendoInfo?
                 <FilmeInfo filmeSele={filme}/>  
                 :

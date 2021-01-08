@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  
   "private": true,
   "scripts": {
     "dev": "next",
@@ -12,14 +11,12 @@
     "export": "npm run build && next export",
     "predeploy": "rm -rf node_modules/.cache && rm -rf out",
     "deploy": "npm run predeploy && rm -rf .next && npm run export",
-    "qcmt" : "git add . && git commit -m 'deploy2test' "
-    
-    
-    
+    "qcmt": "git add . && git commit -m 'deploy2test' "
   },
   "dependencies": {
     "@material-ui/core": "^4.11.2",
-    "axios": "^0.21.0",
+    "@material-ui/icons": "^4.11.2",
+    "axios": "^0.21.1",
     "next": "^10.0.1",
     "next-pwa": "latest",
     "react": "^17.0.1",

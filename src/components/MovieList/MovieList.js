@@ -47,18 +47,20 @@ const MovieList = ({setPNoFilme}) =>{
     async function mostrarInfo(FilmeBtnInfo){
         if(isLendoInfo){
           setLendoInfo(false);
-          setDados(todosFilmes);
+          setDados(todosFilmes);  
+          setPNoFilme([]);
         }else{
             let filmeSelecionado = 
                 dados.filter(filme=>filme==FilmeBtnInfo);
-                console.log(filmeSelecionado[0].title);
+               // console.log(filmeSelecionado[0].title);
             setDados(filmeSelecionado);
             setLendoInfo(true);
+            setPNoFilme(FilmeBtnInfo.characters)
         }
     }
     
     return(<div>        
-        <h5>-----Clique em um filme para saber os personagens------</h5>
+        <Paper>-----Clique em um filme para saber os personagens------</Paper>
         {/* grupo de botoes material ui */}
         <ButtonGroup
         orientation="vertical"
@@ -74,7 +76,7 @@ const MovieList = ({setPNoFilme}) =>{
         dados.map(filme=>
         (<Button onClick={()=>{
             mostrarInfo(filme)
-            setPNoFilme(filme.characters)
+            
             }}        
             key={filme.episode_id}>
                 titulo:{filme.title}

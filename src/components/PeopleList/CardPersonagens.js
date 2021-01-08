@@ -74,7 +74,7 @@ const CardPersonagens = ({SwapiDados})=>{
             <Paper elevation={4}
         variant="elevation" 
         style={{paddingLeft:'12px'
-        ,backgroundColor:'#111'}}               
+        ,backgroundColor:'#444'}}               
            key={index}
            color="secondary">
              <img src={getImgPersonagem(personagem.name)}

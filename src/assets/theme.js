@@ -18,6 +18,7 @@ const theme = createMuiTheme({
     },
     typography: {
         fontFamily: [
+            'Poller One',
           'Arial', 
           'Chilanka',
           'cursive',

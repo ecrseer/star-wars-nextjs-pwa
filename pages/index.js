@@ -10,8 +10,12 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
       justifyContent: 'space-around',
       overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
+      
     }, 
+    filmes:{
+        alignItems:'center',
+        justifySelf: 'right'
+    }
   }));
 
 export default function index() {
@@ -24,19 +28,17 @@ export default function index() {
     const classes = useStyles();
 
     return(
-    <div >    
-    <Grid container spacing={3}     
-    >          
-    <Grid item xs={12} sm={6} md={6} lg={6}>       
-        <MovieList selected={seta_Selecao}/>
-     </Grid>   
-     <Grid item xs={6} sm={6} md={6}  lg={2} >
-     <div>
+    <div className={classes.root}>    
+    
+       
+        <MovieList selected={seta_Selecao} className={classes.filmes}/>
+     
+         
+                
+        <PeopleList personagensfilme={selecao} 
+        className={classes.root}/>
         
-        <PeopleList ArrayPersonagemDoFilme={selecao}/>
-        </div>
-    </Grid>
-    </Grid>
+    
     </div>
     );
     

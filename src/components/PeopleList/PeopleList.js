@@ -1,9 +1,21 @@
 import {swapi} from '../../../api';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Box, Grow, Paper, Typography } from '@material-ui/core';
+import { Box, GridList, Grow, makeStyles, Paper, Typography } from '@material-ui/core';
 import {PersonagemImgApi} from '../../assets/personagensImageApi';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {     
+      
+    },
+    gridList: {
+    },
+}));
+
+
 const PeopleList = (props) =>{
+    const classes = useStyles();
 
     const [dados,setDados] = useState([]);    
     const [personagensImgs,setPersonagensImgs] = useState([{}]);
@@ -43,9 +55,9 @@ async function acessaPersonagens(arrLinks){
    useEffect(()=>{  
     setIsCarregando(true);
     getTodosImgApi();
-    acessaPersonagens(props.ArrayPersonagemDoFilme);     
+    acessaPersonagens(props.personagensfilme);     
 },
-[props.ArrayPersonagemDoFilme])
+[props.personagensfilme])
 
 const cardPersonagem = (personagem,index)=>{
     return(<Paper elevation={3}
@@ -65,13 +77,17 @@ const cardPersonagem = (personagem,index)=>{
                </Typography> 
            </Paper>)
 }
-return(
-<div> 
-<button onClick={()=>{setisCarregando(anterior=>!anterior)}}>isCarregando</button>
-<p>bol: {isCarregando}</p>
-<Grow in={!isCarregando} {...props}>
 
- 
+const cartaoPersonagem = (personagem,index)=>{
+    return(
+        <Box></Box>
+
+    )}
+
+return(
+<div className={classes.root}> 
+
+ <Grow in={!isCarregando} {...props}> 
   <div>
         {dados?
             dados.map((personagem,index)=>{    
@@ -81,7 +97,7 @@ return(
         (<div></div>)
         }
    </div>
-</Grow>
+ </Grow>
 
 
 

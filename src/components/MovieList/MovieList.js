@@ -64,6 +64,7 @@ const MovieList = ({selected}) =>{
             selected(filme.characters)}}        
             key={filme.episode_id}>
                 titulo:{filme.title}
+                
                 {isLendoInfo?
                 (filmeInfo(filme))  
                 :<><br/>Clique para mais informacoes</>

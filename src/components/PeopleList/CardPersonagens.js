@@ -27,8 +27,7 @@ const CardPersonagens = ({SwapiDados})=>{
     async function getTodosImgApi(){
 
         try {
-            const {data} = await PersonagemImgApi.get('/all.json');
-            //console.log('imagemdo'+data[1].name)
+            const {data} = await PersonagemImgApi.get('/all.json');            
             setPersonagensImgs(data);
             
             }catch (error) {
@@ -36,10 +35,18 @@ const CardPersonagens = ({SwapiDados})=>{
             } 
         }
 
-        /*  */
+        /* funcao invocada dentro do componente de imagem do card
+         do personagem que recebe o personagem
+         que esta atualmente sendo iterado sobre */
         function getImgPersonagem(nomePersonaCard){
+            /* de todos os personagens dentro do state `personagensImgs`
+            que vem de outra "api" é filtrado aquele que tem o mesmo nome do 
+            personagem que esta sendo iterado no momento */
             let personagemMesmoNome = personagensImgs
                 .filter(personag=>personag.name==nomePersonaCard);
+
+                /* se nao encontrou o personagem retorna 
+                url de imagem   vazia */
              if(typeof personagemMesmoNome[0] === 'undefined')
                 return('#')
         
@@ -48,8 +55,11 @@ const CardPersonagens = ({SwapiDados})=>{
          }
 
 
-
+    /* sempre que for passado um novo array na props `SwapiDados`
+   useEffect sera acionado e acionara o metodo acima,ou seja
+   comportamento conforme seu componente pai `PeopleList.js` */
     useEffect(()=>{
+        /* busca todas urls das imagens */
         getTodosImgApi();
     },
     [SwapiDados])
@@ -58,6 +68,7 @@ const CardPersonagens = ({SwapiDados})=>{
     
     return(
     <div className={classes.root}>{
+        
       SwapiDados.map((personagem,index)=>{     
         return(
             <Paper elevation={4}
@@ -78,7 +89,7 @@ const CardPersonagens = ({SwapiDados})=>{
                <div>cor dos olhos: {personagem.eye_color}</div>
                <div>data de nascimento: {personagem.birth_year}</div>
                <div>genero: {personagem.gender}</div>
-               </Typography> 
+            </Typography> 
            </Paper>
 
       )})}</div>)            

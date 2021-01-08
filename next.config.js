@@ -9,6 +9,9 @@ module.exports = withPWA({
       swSrc: 'service-worker.js'
     },
     env:{      
+        /* achei que ia ser necessario passar
+        a url da api como variavel local
+         mas acabei nao precisando(por enquanto) */
         MY_SWAPI: process.env.MY_SWAPI,
     },
     

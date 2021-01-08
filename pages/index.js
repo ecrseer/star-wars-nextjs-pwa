@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
     root: {
       /* grid para fazer os cards de
          personagens preencher o resto do espaço*/  
-         display: 'grid',
-         gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
+         display: 'grid',         
          gridGap: '20px',
+         alignItems:'stretch'
          
       
       

@@ -9,11 +9,9 @@ import PeopleCard from './PeopleCard';
 const useStyles = makeStyles((theme) => ({
     root: {     
         display:'grid',
-        gridTemplateColumns: 'repeat(2, minmax(220px, 0.2fr))',
-        gridGap: '10px'
-        
-    },
-    gridList: {
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 0.2fr))',
+        gridGap: '10px',
+        justifyContent: 'center'
     },
 }));
 
@@ -112,7 +110,7 @@ const CardPersonagem = ()=>{
 return(
 
  <Grow in={!isCarregando} {...props}> 
-  <div className={classes.root}>
+  <div >
      <CardPersonagem/>
    </div>
  </Grow>

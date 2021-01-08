@@ -1,9 +1,20 @@
 import {swapi} from '../../../api';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Button, ButtonGroup, Paper } from '@material-ui/core';
+import { Button, ButtonGroup, makeStyles, Paper } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    root: {     
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      
+                
+    },
+}));
 
 const MovieList = ({setPNoFilme}) =>{
+    const classes = useStyles();
+
 
     const [dados,setDados] = useState([]);
     const [todosFilmes,setTodosFilmes] = useState([]);
@@ -63,10 +74,11 @@ const MovieList = ({setPNoFilme}) =>{
         <Paper>-----Clique em um filme para saber os personagens------</Paper>
         {/* grupo de botoes material ui */}
         <ButtonGroup
-        orientation="vertical"
+        orientation="horizontal"
         color="primary"
-        aria-label="vertical contained primary button group"
+        aria-label="horizontal contained primary button group"
         variant="text"
+        className={classes.root}
       >
       {/* se houver dados da swapi no state
         eles serao mapeados um por um onde cada um 

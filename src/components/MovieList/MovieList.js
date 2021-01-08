@@ -48,7 +48,7 @@ const MovieList = ({setPNoFilme}) =>{
         if(isLendoInfo){
           setLendoInfo(false);
           setDados(todosFilmes);  
-          setPNoFilme([]);
+//          setPNoFilme([]);
         }else{
             let filmeSelecionado = 
                 dados.filter(filme=>filme==FilmeBtnInfo);
@@ -75,8 +75,7 @@ const MovieList = ({setPNoFilme}) =>{
       {dados?
         dados.map(filme=>
         (<Button onClick={()=>{
-            mostrarInfo(filme)
-            
+            mostrarInfo(filme)            
             }}        
             key={filme.episode_id}>
                 titulo:{filme.title}

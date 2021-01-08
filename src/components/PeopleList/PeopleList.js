@@ -9,7 +9,7 @@ import PeopleCard from './PeopleCard';
 const useStyles = makeStyles((theme) => ({
     root: {     
         display:'grid',
-        gridTemplateColumns: 'repeat(3, minmax(250px, 1fr))',
+        gridTemplateColumns: 'repeat(2, minmax(220px, 0.2fr))',
         gridGap: '10px'
         
     },
@@ -28,7 +28,7 @@ const PeopleList = (props) =>{
     function getImgPersonagem(nomePersonaCard){
         let personagemMesmoNome = personagensImgs
             .filter(personag=>personag.name==nomePersonaCard);
-         if(typeof personagemMesmoNome === 'undefined')
+         if(typeof personagemMesmoNome[0] === 'undefined')
             return('#')
 
          return(personagemMesmoNome[0].image);
@@ -51,10 +51,9 @@ async function acessaPersonagens(arrLinks){
     let arr = arrLinks;
     setDados([]);    
     if(arr.length>1){
-        console.log('lendo personagens')
-
-    for (var i = 0; i < arr.length; i++) {        
         
+
+    for (var i = 0; i < arr.length; i++) { 
         try{            
             const {data} = await axios.get(arr[i]);
             setDados(dados => [...dados, data]); 

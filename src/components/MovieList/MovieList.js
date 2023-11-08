@@ -1,6 +1,12 @@
 import { swapi } from "../../../api";
 import { useEffect, useState } from "react";
-import { Button, ButtonGroup, makeStyles, Paper } from "@material-ui/core";
+import {
+  Button,
+  ButtonGroup,
+  makeStyles,
+  Paper,
+  LinearProgress,
+} from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
@@ -109,6 +115,7 @@ const MovieList = ({ setPNoFilme }) => {
     <div>
       <Paper>-----Clique em um filme para saber os personagens------</Paper>
       {/* grupo de botoes material ui */}
+      {!dados ? <LinearProgress color="secondary" width={1000} /> : <div></div>}
       <ButtonGroup
         orientation="horizontal"
         color="primary"
@@ -144,12 +151,7 @@ const MovieList = ({ setPNoFilme }) => {
             </Button>
           ))
         ) : (
-          <>
-            <Skeleton variant="rect" width={218} height={118} />
-            <Skeleton variant="rect" width={218} height={118} />
-            <Skeleton variant="rect" width={218} height={118} />
-            <Skeleton variant="rect" width={218} height={118} />
-          </>
+          <div></div>
         )}
       </ButtonGroup>
     </div>
